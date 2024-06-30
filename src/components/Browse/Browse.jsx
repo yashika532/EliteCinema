@@ -2,21 +2,18 @@ import React, { useEffect } from 'react'
 import Header from '../Header/Header'
 import MainContainer from '../MainContainer/MainContainer'
 import MovieContainer from '../MovieContainer/MovieContainer'
-import axios from "axios"
-import { Now_Playing_Movies, options } from '../../utils/constant'
+import useNowPlayingMovies from '../../hooks/useNowPlayingMovies'
+import usePopularMovies from '../../hooks/usePopularMovies'
+import useTopRatedMovies from '../../hooks/useTopRatedMovies'
+import useUpcomingMovies from '../../hooks/useUpcomingMovies'
 
 const Browse = () => {
-  const nowPlayingMovies = async()=>{
-try {
-  const response = await axios.get(Now_Playing_Movies,options);
-  console.log(response.data.results)
-} catch (error) {
-  console.log("errors");
-}
-  }
-
+  useNowPlayingMovies();
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcomingMovies();
   useEffect(()=>{
-    nowPlayingMovies();
+   
   },[]);
 
   return (
