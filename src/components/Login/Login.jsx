@@ -63,6 +63,18 @@ const Login = () => {
 
       
           <input type="text" placeholder='Password'   className='outline-none p-3 my-2 rounded-sm bg-gray-800 text-white'/>
+          <button className='bg-red-600 mt-6 p-3 text-white rounded-sm font-medium submit'>
+            {isLogin ? "Login" : "Signup"}
+          </button>
+          <p className='text-white mt-2'>
+            {isLogin ? "New to Elite Cinema?" : "Already have an account"}
+            <span 
+              onClick={loginHandler}  
+              className='ml-1 text-red-500 font-medium cursor-pointer'
+            >
+              {isLogin ? "Signup" : "Login"}
+            </span>
+          </p>
         </div>
       </form>
     </div>
