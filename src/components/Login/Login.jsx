@@ -3,6 +3,7 @@ import Header from '../Header/Header'
 import loginimg from '../../assets/login.jpg'
 import axios from 'axios';
 import { API_END_POINT } from '../../utils/constant';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [isLogin,setIsLogin]=useState(false);
@@ -23,9 +24,14 @@ const Login = () => {
           try{
             const response = await axios.post(`${API_END_POINT}/login`,user);
             console.log(response.data);
+            if(response.data.success)
+              {
+                toast.success(response.data.message);
+              }
           }
           catch(error)
           {
+            toast.error(error.response.data.message);
             console.log(error);
           }
       }
@@ -34,10 +40,15 @@ const Login = () => {
         try{
           const response = await axios.post(`${API_END_POINT}/register`,user);
           console.log(response.data);
+          if(response.data.success)
+            {
+              toast.success(response.data.message);
+            }
         }
         catch(error)
         {
           console.log(error);
+          toast.error(error.response.data.message);
         }
 
       }
