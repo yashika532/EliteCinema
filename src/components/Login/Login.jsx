@@ -48,21 +48,37 @@ const Login = () => {
   }
   return (
     <div>
-      <Header/>
+      <Header />
       <div className='absolute'>
         <img className='w-[100vw] h-[100vh]' src={loginimg} alt="Login-Banner" />
       </div>
 
-      <form onSubmit={getInputData} className=' flex flex-col w-3/12 p-12  my-36 left-0 mx-auto right-0 items-center justify-center absolute bg-black opacity-90'>
-      <h1 className='text-white text-3xl mb-5 font-bold'>Signup</h1>
+      <form onSubmit={getInputData} className='h-[65vh] flex flex-col w-96 p-12 my-36 left-0 mx-auto right-0 items-center justify-center absolute bg-black opacity-80 rounded-md form'>
+        <h1 className='text-white text-3xl mb-5 font-bold'>{isLogin ? "Login" : "Signup"}</h1>
         <div className='flex flex-col'>
-          
-          <input type="text" placeholder='Fullname' className='outline-none p-3 my-2 rounded-sm bg-gray-800 text-white' />
-
-          <input type="text" placeholder='Email'  className='outline-none p-3 my-2 rounded-sm bg-gray-800 text-white' />
-
-      
-          <input type="text" placeholder='Password'   className='outline-none p-3 my-2 rounded-sm bg-gray-800 text-white'/>
+          {!isLogin && (
+            <input 
+              value={fullName} 
+              onChange={(e) => setFullName(e.target.value)}  
+              type="text" 
+              placeholder='Fullname' 
+              className='outline-none p-3 my-2 rounded-sm bg-gray-800 text-white' 
+            />
+          )}
+          <input 
+            value={email}  
+            onChange={(e) => setEmail(e.target.value)} 
+            type="email" 
+            placeholder='Email'  
+            className='email outline-none p-3 my-2 rounded-sm bg-gray-800 text-white' 
+          />
+          <input 
+            value={password}  
+            onChange={(e) => setPassword(e.target.value)} 
+            type="password" 
+            placeholder='Password'   
+            className='password outline-none p-3 my-2 rounded-sm bg-gray-800 text-white' 
+          />
           <button className='bg-red-600 mt-6 p-3 text-white rounded-sm font-medium submit'>
             {isLogin ? "Login" : "Signup"}
           </button>
@@ -78,7 +94,6 @@ const Login = () => {
         </div>
       </form>
     </div>
-  )
-}
-
-export default Login
+  );
+};
+export default Login;
