@@ -7,7 +7,7 @@ const useTopRatedMovies = async () => {
   const dispatch = useDispatch();
 try {
    const response = await axios.get(Top_Rated_Movies,options);
-   console.log(response.data.results)
+  //  console.log(response.data.results)
    dispatch(getTopRatedMovie(response.data.results))
 } catch (error) {
   console.log("errors");

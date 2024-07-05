@@ -6,8 +6,13 @@ import useNowPlayingMovies from '../../hooks/useNowPlayingMovies'
 import usePopularMovies from '../../hooks/usePopularMovies'
 import useTopRatedMovies from '../../hooks/useTopRatedMovies'
 import useUpcomingMovies from '../../hooks/useUpcomingMovies'
+import { useSelector } from 'react-redux'
+import SearchMovie from '../SearchMovie/SearchMovie'
 
 const Browse = () => {
+
+  const toggle = useSelector(store=>store.movie.toggle);
+
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -20,8 +25,14 @@ const Browse = () => {
     <div>
       <Header/>
       <div>
-        <MainContainer/>
-        <MovieContainer/>
+        {
+          toggle? <SearchMovie/>:
+          <>
+               <MainContainer/>
+               <MovieContainer/>
+          </>
+        }
+   
       </div>
     </div>
   )

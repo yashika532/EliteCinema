@@ -7,7 +7,7 @@ const usePopularMovies = async () => {
   const dispatch = useDispatch();
 try {
    const response = await axios.get(Popular_Movies,options);
-   console.log(response.data.results)
+  //  console.log(response.data.results)
    dispatch(getPopularMovie(response.data.results))
 } catch (error) {
   console.log("errors");

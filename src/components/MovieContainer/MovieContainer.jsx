@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const MovieContainer = () => {
   const movie = useSelector(store=>store.movie);
-  console.log(movie);
+  // console.log(movie);
   return (
     <div className='bg-black'>
       <div  className='-mt-30 relative z-10'>

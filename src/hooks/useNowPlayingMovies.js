@@ -6,7 +6,7 @@ const useNowPlayingMovies = async()=>{
   const dispatch = useDispatch();
   try {
     const response = await axios.get(Now_Playing_Movies,options);
-    console.log(response.data.results)
+    // console.log(response.data.results)
     dispatch(getNowPlayingMovie(response.data.results))
   } catch (error) {
     console.log("errors");
