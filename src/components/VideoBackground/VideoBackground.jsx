@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import useMovieId from '../../hooks/useMovieId';
 import { useSelector } from 'react-redux';
 
