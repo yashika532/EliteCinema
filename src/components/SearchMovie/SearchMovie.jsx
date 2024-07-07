@@ -14,7 +14,7 @@ const SearchMovie = () => {
         options
       );
       // console.log(response.data);
-      dispatc();
+      dispatch();
     
     } catch (error) {
       console.log("errors");
