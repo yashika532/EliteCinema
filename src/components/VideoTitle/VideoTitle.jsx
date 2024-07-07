@@ -3,7 +3,7 @@ import { FaPlay } from "react-icons/fa6";
 import { IoInformationCircle } from "react-icons/io5";
 const VideoTitle = ({title,overview}) => {
   return (
-    <div className="w-screen aspect-video absolute text-white pt-[18%] p-12">
+    <div className="w-[vw] absolute text-white pt-[18%] p-12">
       <h1 className="text-3xl font-bold">{title}</h1>
       <p className="w-1/3 mt-4">
        {overview}
