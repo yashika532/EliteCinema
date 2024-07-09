@@ -1,8 +1,17 @@
 import React from 'react'
 import { TMDB_IMG_URL } from '../../utils/constant'
-const MovieCard = ({posterPath}) => {
+import { useDispatch } from 'react-redux';
+import { setOpen } from '../../redux/movieSlice';
+const MovieCard = ({posterPath,movieId}) => {
+  if(posterPath===null)return null;
+  const dispatch = useDispatch();
+  const handleOpen = () =>{
+    dispatch(getId(movieId));
+    dispatch(setOpen(true));
+  }
+
   return (
-    <div className='w-48 pr-2'>
+    <div className='w-48 pr-2' onClick={handleOpen} >
       <img src={`${TMDB_IMG_URL}/${posterPath}`} alt="movie-banner" />
     </div>
   )

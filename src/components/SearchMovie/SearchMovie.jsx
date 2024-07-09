@@ -1,11 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { options, SEARCH_MOVIE_URL } from "../../utils/constant";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
+import { setSearchMovieDetails } from "../../redux/searchSlice";
+import MovieList from '../MovieList/MovieList'
 
 const SearchMovie = () => {
   const [searchMovie, setSearchMovie] = useState("");
-  dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const {movieName, searchedMovie} = useSelector(store=>store.searchMovie);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -13,16 +17,19 @@ const SearchMovie = () => {
         `${SEARCH_MOVIE_URL}${searchMovie}&include_adult=false&language=en-US&page=1`,
         options
       );
-      // console.log(response.data);
-      dispatch();
+      console.log(response.data.results);
+      const movies = response?.data?.results;
+      dispatch(setSearchMovieDetails({searchMovie,movies}));
     
     } catch (error) {
       console.log("errors");
     }
+    setSearchMovie("");
   };
 
   return (
-    <div className="flex justify-center pt-[10%] w-[100%]">
+    <>
+<div className="flex justify-center pt-[10%] w-[100%]">
       <form onSubmit={submitHandler} className="w-[50%]">
         <div className="flex justify-between shadow-md border-2 border-gray-200 rounded-lg w-[100%]">
           <input
@@ -38,6 +45,10 @@ const SearchMovie = () => {
         </div>
       </form>
     </div>
+     
+    <MovieList title = {movieName} movies = {searchedMovie} searchMovie = {true}/>
+    </>
+    
   );
 };
 
