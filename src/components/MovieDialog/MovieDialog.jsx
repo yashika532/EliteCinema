@@ -26,7 +26,7 @@ export default function MovieDialog() {
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-           <VideoBackground movieId={id}/>
+           <VideoBackground movieId={id} bool = {true}/>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

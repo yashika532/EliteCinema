@@ -1,7 +1,7 @@
 import React from 'react'
 import { TMDB_IMG_URL } from '../../utils/constant'
 import { useDispatch } from 'react-redux';
-import { setOpen } from '../../redux/movieSlice';
+import { setOpen ,getId } from '../../redux/movieSlice';
 const MovieCard = ({posterPath,movieId}) => {
   if(posterPath===null)return null;
   const dispatch = useDispatch();
